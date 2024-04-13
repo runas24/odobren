@@ -1,15 +1,16 @@
-document.getElementById("loanForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    
-    var loanAmount = parseFloat(document.getElementById("loanAmount").value);
-    var loanTerm = parseInt(document.getElementById("loanTerm").value);
-    var interestRate = parseFloat(document.getElementById("interestRate").value);
+// Функция для добавления разделителя в числа для удобочитаемости
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
-    var monthlyInterestRate = (interestRate / 100) / 12;
-    var loanTermMonths = loanTerm * 12;
-    var numerator = loanAmount * monthlyInterestRate;
-    var denominator = 1 - Math.pow(1 + monthlyInterestRate, -loanTermMonths);
-    var monthlyPayment = numerator / denominator;
+// Форматирование ввода суммы кредита
+document.getElementById("loanAmount").addEventListener("input", function(event) {
+    var loanAmount = event.target.value.replace(/\D/g, "");
+    event.target.value = numberWithCommas(loanAmount);
+});
 
-    document.getElementById("monthlyPayment").innerText = "Ежемесячный платеж: " + monthlyPayment.toFixed(2) + " тенге";
+// Форматирование ввода процентной ставки
+document.getElementById("interestRate").addEventListener("input", function(event) {
+    var interestRate = event.target.value.replace(/\D/g, "");
+    event.target.value = numberWithCommas(interestRate);
 });
