@@ -14,11 +14,11 @@
 <div class="container">
     <form id="loanForm">
         <label for="loanAmount">Сумма кредита (в тенге):</label>
-        <input type="number" id="loanAmount" required><br>
+        <input type="text" id="loanAmount" required pattern="[0-9,]+" title="Введите число, например: 100,000"><br>
         <label for="loanTerm">Срок кредита (в годах):</label>
         <input type="number" id="loanTerm" required><br>
         <label for="interestRate">Процентная ставка (%):</label>
-        <input type="text" id="interestRate" required pattern="[0-9]+([\.,][0-9]+)?" title="Введите число, например: 18 или 18.5"><br>
+        <input type="text" id="interestRate" required pattern="[0-9,]+" title="Введите число, например: 18,5"><br>
         <button type="submit">Рассчитать</button>
     </form>
     <div id="monthlyPayment"></div>
