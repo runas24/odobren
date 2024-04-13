@@ -1,44 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Кредитный калькулятор</title>
-<style>
-    input[type="number"] {
-        width: 100px;
-    }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Пример JavaScript</title>
 </head>
 <body>
-<h2>Кредитный калькулятор</h2>
-<form id="loanForm">
-    <label for="loanAmount">Сумма кредита (в тенге):</label>
-    <input type="number" id="loanAmount" required><br><br>
-    <label for="loanTerm">Срок кредита (в годах):</label>
-    <input type="number" id="loanTerm" required><br><br>
-    <label for="interestRate">Процентная ставка (%):</label>
-    <input type="number" id="interestRate" required><br><br>
-    <button type="submit">Рассчитать</button>
-</form>
-<div id="monthlyPayment"></div>
+  <button id="myButton">Нажми меня</button>
+  <p id="myText"></p>
 
-<script>
-document.getElementById("loanForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    
-    var loanAmount = parseFloat(document.getElementById("loanAmount").value);
-    var loanTerm = parseInt(document.getElementById("loanTerm").value);
-    var interestRate = parseFloat(document.getElementById("interestRate").value);
-
-    var monthlyInterestRate = (interestRate / 100) / 12;
-    var loanTermMonths = loanTerm * 12;
-    var numerator = loanAmount * monthlyInterestRate;
-    var denominator = 1 - Math.pow(1 + monthlyInterestRate, -loanTermMonths);
-    var monthlyPayment = numerator / denominator;
-
-    document.getElementById("monthlyPayment").innerText = "Ежемесячный платеж: " + monthlyPayment.toFixed(2) + " тенге";
-});
-</script>
+  <!-- Подключение скрипта -->
+  <script src="script.js"></script>
 </body>
 </html>
