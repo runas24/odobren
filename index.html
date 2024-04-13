@@ -4,20 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Кредитный калькулятор</title>
-<link rel="stylesheet" href="styles.css"> <!-- Проверьте путь к вашему CSS файлу -->
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h2>Кредитный калькулятор</h2>
-<form id="loanForm">
-    <label for="loanAmount">Сумма кредита (в тенге):</label>
-    <input type="number" id="loanAmount" required><br><br>
-    <label for="loanTerm">Срок кредита (в годах):</label>
-    <input type="number" id="loanTerm" required><br><br>
-    <label for="interestRate">Процентная ставка (%):</label>
-    <input type="text" id="interestRate" required pattern="[0-9]+([\.,][0-9]+)?" title="Введите число, например: 18 или 18.5"><br><br>
-    <button type="submit">Рассчитать</button>
-</form>
-<div id="monthlyPayment"></div>
+<div class="container">
+    <h2>Кредитный калькулятор</h2>
+    <form id="loanForm">
+        <label for="loanAmount">Сумма кредита (в тенге):</label>
+        <input type="number" id="loanAmount" required><br>
+        <label for="loanTerm">Срок кредита (в годах):</label>
+        <input type="number" id="loanTerm" required><br>
+        <label for="interestRate">Процентная ставка (%):</label>
+        <input type="text" id="interestRate" required pattern="[0-9]+([\.,][0-9]+)?" title="Введите число, например: 18 или 18.5"><br>
+        <button type="submit">Рассчитать</button>
+    </form>
+    <div id="monthlyPayment"></div>
+</div>
 
 <script src="script.js"></script>
 </body>
