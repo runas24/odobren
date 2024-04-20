@@ -1,20 +1,26 @@
-function generateText() {
-    var inputText = document.getElementById('inputText').value;
+const chatLog = document.getElementById('chat-log');
+const userInput = document.getElementById('user-input');
 
-    // Отправляем запрос к серверной части
-    fetch('/generate', {
+function appendMessage(message, sender) {
+    const messageElement = document.createElement('div');
+    messageElement.innerText = `${sender}: ${message}`;
+    chatLog.appendChild(messageElement);
+}
+
+function sendMessage() {
+    const userMessage = userInput.value;
+    userInput.value = '';
+    appendMessage(userMessage, 'You');
+    fetch('/sendMessage', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ text: inputText })
+        body: JSON.stringify({ message: userMessage })
     })
     .then(response => response.json())
     .then(data => {
-        // Отображаем результат от сервера
-        document.getElementById('output').innerText = data.generatedText;
+        appendMessage(data.message, 'Bot');
     })
-    .catch(error => {
-        console.error('Ошибка:', error);
-    });
+    .catch(error => console.error('Error:', error));
 }
