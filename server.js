@@ -14,7 +14,7 @@ app.post('/generate', async (req, res) => {
         const { text } = req.body;
 
         // Здесь вам нужно будет использовать ваш ключ API для обращения к сервису GPT
-        const apiKey = 'YOUR_API_KEY';
+        const apiKey = 'sk-proj-UCP9clOKjy3yTZDgJQKlT3BlbkFJKFYdBOnfRlE3rxTCbB4h';
         const apiUrl = 'https://api.openai.com/v1/completions';
 
         const response = await axios.post(apiUrl, {
