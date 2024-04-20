@@ -19,17 +19,25 @@ function sendMessage() {
     const userMessage = userInput.value;
     userInput.value = '';
     appendMessage(userMessage, 'You');
-    fetch('/sendMessage', {
+
+    // Отправка запроса к API GPT
+    fetch('https://api.openai.com/v1/completions', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer sk-32323-29SWBUEQyj1Jx9346eG4T3BlbkFJOXxLTCXjZCoQlOQvrxVZ', // Замените на свой ключ API GPT
         },
-        body: JSON.stringify({ message: userMessage })
+        body: JSON.stringify({
+            prompt: userMessage,
+            model: 'text-davinci-003', // Здесь можно указать нужную модель GPT
+            max_tokens: 50 // Максимальное количество токенов в ответе
+        })
     })
     .then(response => response.json())
     .then(data => {
-        appendMessage(data.message, 'Bot');
-        displayBotResponse(data.message); // Отображаем ответ бота
+        const botMessage = data.choices[0].text.trim();
+        appendMessage(botMessage, 'Bot');
+        displayBotResponse(botMessage); // Отображаем ответ бота
     })
     .catch(error => console.error('Error:', error));
 }
