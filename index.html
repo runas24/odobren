@@ -1,62 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GPT API Example</title>
-<style>
-  #inputText {
-    width: 80%;
-    margin-bottom: 10px;
-  }
-  #outputText {
-    width: 80%;
-    height: 200px;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPT API Example</title>
 </head>
 <body>
-<h1>GPT API Example</h1>
-<textarea id="inputText" placeholder="Введите текст для генерации"></textarea><br>
-<button onclick="generateText()">Сгенерировать текст</button><br>
-<textarea id="outputText" placeholder="Сгенерированный текст будет отображен здесь" readonly></textarea>
+    <h1>Пример использования GPT API</h1>
+    <textarea id="inputText" placeholder="Введите текст для генерации"></textarea>
+    <button onclick="generateText()">Сгенерировать текст</button>
+    <div id="output"></div>
 
-<script>
-function generateText() {
-  const inputText = document.getElementById('inputText').value;
-  
-  // Замените 'YOUR_API_KEY' на ваш реальный ключ API
-  const apiKey = 'sk-11-kCegHTuxNofF59rlTxs2T3BlbkFJ7jrJ1ZVFyrib40FlUZ5t';
-  
-  // URL для отправки запроса к API GPT
-  const apiUrl = 'https://api.openai.com/v1/completions';
-
-  // Тело запроса к API
-  const requestBody = {
-    model: 'text-davinci-002', // Здесь указывается модель GPT
-    prompt: inputText,
-    max_tokens: 100 // Максимальное количество токенов (слов) для генерации текста
-  };
-
-  // Опции запроса
-  const requestOptions = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${apiKey}`
-    },
-    body: JSON.stringify(requestBody)
-  };
-
-  // Отправка запроса к API GPT
-  fetch(apiUrl, requestOptions)
-    .then(response => response.json())
-    .then(data => {
-      const generatedText = data.choices[0].text.trim(); // Полученный сгенерированный текст
-      document.getElementById('outputText').value = generatedText;
-    })
-    .catch(error => console.error('Ошибка при отправке запроса:', error));
-}
-</script>
+    <script src="script.js"></script>
 </body>
 </html>
