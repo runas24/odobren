@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GPT API Example</title>
+    <title>Chat with GPT</title>
 </head>
 <body>
-    <h1>Пример использования GPT API</h1>
-    <textarea id="inputText" placeholder="Введите текст для генерации"></textarea>
-    <button onclick="generateText()">Сгенерировать текст</button>
-    <div id="output"></div>
-
+    <div id="chat-container">
+        <div id="chat-log"></div>
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
